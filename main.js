@@ -17,7 +17,13 @@ var app = new Vue({
     map
   ],
   mounted() {
-    // Your code here...
+    this.interval = setInterval(() => {
+      if (this.ros != null && this.ros.isConnected) {
+        this.ros.getNodes((data) => { }, (error) => { })
+      }
+    }, 10000)
   },
-  // remaining code...
+  beforeDestroy() {
+    clearInterval(this.interval);
+  },
 });
