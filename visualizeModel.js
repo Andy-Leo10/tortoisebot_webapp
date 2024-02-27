@@ -14,7 +14,7 @@ export default {
             this.viewer = new ROS3D.Viewer({
                 background: '#cccccc',
                 divID: 'div3DViewer',
-                width: 400,
+                width: 300,
                 height: 300,
                 antialias: true,
                 fixedFrame: 'odom'

@@ -25,7 +25,12 @@
     cd ~/webpage_ws/tortoisebot_webapp
     python -m http.server 7000
 
-**terminal 6 - others**
+**terminal 7 - tf data**
+
+    source ~/simulation_ws/devel/setup.bash
+    roslaunch course_web_dev_ros tf2_web.launch
+
+**terminal 8 - others**
 
     rostopic type /tortoisebot_as/goal
     rosmsg show course_web_dev_ros/WaypointActionActionGoal
