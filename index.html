@@ -13,6 +13,17 @@
     </script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- 3D visualization -->
+    <!-- <script src="http://static.robotwebtools.org/threejs/current/three.min.js"></script> -->
+    <script src="./libs/three.min.js"></script>
+    <!-- <script src="http://static.robotwebtools.org/threejs/current/ColladaLoader.min.js"></script> -->
+    <script src="./libs/ColladaLoader.js"></script>
+    <!-- <script src="http://static.robotwebtools.org/ColladaAnimationCompress/current/ColladaLoader2.min.js"></script> -->
+    <script src="./libs/ColladaLoader2.js"></script>
+    <!-- <script src="http://static.robotwebtools.org/threejs/current/STLLoader.min.js"></script> -->
+    <script src="./libs/STLLoader.js"></script>
+    <!-- <script src="http://static.robotwebtools.org/ros3djs/current/ros3d.min.js"></script> -->
+    <script src="./libs/ros3d.min.js"></script>
 </head>
 
 <body>
@@ -64,6 +75,7 @@
                             <p class="title">Robot model</p>
                             <div class="content">
                                 <!-- ... -->
+                                <div id="div3DViewer"></div>
                             </div>
                         </article>
                     </div>
@@ -95,7 +107,8 @@
                                         <div class="control">
                                             <div class="select">
                                                 <select v-model="selectedWaypoint" @change="updateGoal">
-                                                    <option v-for="(waypoint, index) in waypoints" :key="index" :value="waypoint">
+                                                    <option v-for="(waypoint, index) in waypoints" :key="index"
+                                                        :value="waypoint">
                                                         Waypoint {{ index + 1 }}: ({{ waypoint.x }}, {{ waypoint.y }})
                                                     </option>
                                                 </select>
@@ -104,10 +117,14 @@
                                     </div>
                                     <div class="field is-grouped">
                                         <div class="control">
-                                            <button class="button is-link" :disabled="!connected || action.status.status == 1" @click="sendGoal">Go to waypoint</button>
+                                            <button class="button is-link"
+                                                :disabled="!connected || action.status.status == 1" @click="sendGoal">Go
+                                                to waypoint</button>
                                         </div>
                                         <div class="control">
-                                            <button class="button is-link is-light" :disabled="!connected || ![1].includes(action.status.status)" @click="cancelGoal">Cancel</button>
+                                            <button class="button is-link is-light"
+                                                :disabled="!connected || ![1].includes(action.status.status)"
+                                                @click="cancelGoal">Cancel</button>
                                         </div>
                                     </div>
                                 </div>

@@ -20,6 +20,8 @@ export default {
         this.logs.unshift((new Date()).toTimeString() + ' - Connected!')
         this.connected = true
         this.loading = false
+        this.visualizeModel();
+        visualizeModel.setup3DViewer();
       })
       this.ros.on('error', (error) => {
         this.logs.unshift((new Date()).toTimeString() + ` - Error: ${error}`)
