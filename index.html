@@ -42,7 +42,8 @@
                             <br><br>
                             <button :disabled="loading" class="button is-danger" @click="disconnect"
                                 v-if="connected">Disconnect!</button>
-                            <button :disabled="loading" class="button is-success" @click="connect" v-else>Connect!</button>
+                            <button :disabled="loading" class="button is-success" @click="connect"
+                                v-else>Connect!</button>
                         </div>
                     </article>
                 </div>
@@ -89,6 +90,14 @@
                             <p class="title">Commands</p>
                             <div class="content">
                                 <!-- ... -->
+                                <div>
+                                    <label>X</label>
+                                    <input type="number" v-model.number="action.goal.position.x" />
+                                </div>
+                                <div>
+                                    <label>Y</label>
+                                    <input type="number" v-model.number="action.goal.position.y" />
+                                </div>
                             </div>
                         </article>
                     </div>
@@ -103,10 +112,20 @@
         //
         // BUT we were having caching-related problems.
         // Loading main.js with a Date.now() in the URL we avoid using cache
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'main.js?v=11.' + Date.now();
-        document.head.appendChild(script);
+        var script1 = document.createElement('script');
+        script1.type = 'module';
+        script1.src = 'rosConnection.js?v=10.' + Date.now();
+        document.head.appendChild(script1);
+
+        var script2 = document.createElement('script');
+        script2.type = 'module';
+        script2.src = 'actionClient.js?v=10.' + Date.now();
+        document.head.appendChild(script2);
+
+        var script_main = document.createElement('script');
+        script_main.type = 'module';
+        script_main.src = 'main.js?v=10.' + Date.now();
+        document.head.appendChild(script_main);
     </script>
 </body>
 
