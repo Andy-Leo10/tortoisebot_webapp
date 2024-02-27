@@ -90,6 +90,7 @@
                             <p class="title">Commands</p>
                             <div class="content">
                                 <!-- ... -->
+                                <label>Goal</label>
                                 <div>
                                     <label>X</label>
                                     <input type="number" v-model.number="action.goal.position.x" />
@@ -98,6 +99,10 @@
                                     <label>Y</label>
                                     <input type="number" v-model.number="action.goal.position.y" />
                                 </div>
+                                <button :disabled="!connected || action.status.status == 1"
+                                    @click="sendGoal">Start</button>
+                                <button :disabled="!connected || ![1].includes(action.status.status)"
+                                    @click="cancelGoal">Cancel</button>
                             </div>
                         </article>
                     </div>
