@@ -1,213 +1,113 @@
 <html>
 
-
-
 <head>
-
-    <!-- Bootstrap -->
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-
-     crossorigin="anonymous">
-
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <!-- ROS stuff -->
-
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/eventemitter2/lib/eventemitter2.min.js">
-
-
-
     </script>
-
     <script type="text/javascript" src="https://s3.eu-west-1.amazonaws.com/rosject.io/js/roslib.min.js">
-
-
-
     </script>
-
     <!-- Vuejs -->
-
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js">
-
-
-
     </script>
-
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-
-
 <body>
-
-    <div id="app" class="container-fluid">
-
-        <div class="row">
-
-            <div class="col-3 text-center">
-
-                <div class="card mt-2">
-
-                    <div class="card-body">
-
-                        <h3>Connection status</h3>
-
-                        <p class="text-danger" v-if="!connected">Not connected!</p>
-
-                        <p class="text-success" v-if="connected">Connected!</p>
-
-                        <label>ROSBridge address</label>
-
-                        <br>
-
-                        <input type="text" v-model="rosbridge_address" />
-
-                        <br><br>
-
-                        <button :disabled="loading" class="btn btn-danger" @click="disconnect"
-
-                            v-if="connected">Disconnect!</button>
-
-                        <button :disabled="loading" class="btn btn-success" @click="connect" v-else>Connect!</button>
-
-                    </div>
-
-                </div>
-
-                <div class="card mt-2">
-
-                    <div class="card-header">
-
-                        <h4>Logs</h5>
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <p v-for="log in logs">{{ log }}</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-9">
-
-                <h3>Controls</h3>
-
-                <div class="row">
-
-                    <div class="col-4">
-
-                        <div class="card mt-2">
-
-                            <div class="card-header">
-
-                                <h4>Robot model</h4>
-
-                            </div>
-
-                            <div class="card-body">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-8">
-
-                        <div class="card mt-2">
-
-                            <div class="card-header">
-
-                                <h4>Generated Map</h4>
-
-                            </div>
-
-                            <div class="card-body">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-4">
-
-                        <div class="card mt-2">
-
-                            <div class="card-header">
-
-                                <h4>Camera</h4>
-
-                            </div>
-
-                            <div class="card-body">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-8">
-
-                        <div class="card mt-2">
-
-                            <div class="card-header">
-
-                                <h4>Commands</h4>
-
-                            </div>
-
-                            <div class="card-body">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+    <section class="section">
+        <div class="container">
+            <h1 class="title custom-font-super-cell has-text-centered">
+                <img src="robot-icon.png" alt="Robot Icon" class="icon"> TortoiseBot WebApp
+            </h1>
+            <p class="subtitle has-text-centered">
+                A simple web application to control your TortoiseBot
+            </p>
         </div>
-
+    </section>
+    <div id="app" class="container">
+        <div class="tile is-ancestor">
+            <div class="tile is-4 is-vertical">
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-primary">
+                        <p class="title">Connection status</p>
+                        <p class="subtitle has-text-danger" v-if="!connected">Not connected!</p>
+                        <p class="subtitle has-text-success" v-if="connected">Connected!</p>
+                        <div class="content">
+                            <!-- ... -->
+                            <label>ROSBridge address</label>
+                            <br>
+                            <input class="input" type="text" v-model="rosbridge_address" />
+                            <br><br>
+                            <button :disabled="loading" class="button is-danger" @click="disconnect"
+                                v-if="connected">Disconnect!</button>
+                            <button :disabled="loading" class="button is-success" @click="connect" v-else>Connect!</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-warning">
+                        <p class="title">Logs</p>
+                        <div class="content">
+                            <!-- ... -->
+                            <p v-for="log in logs">{{ log }}</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="tile is-8 is-vertical">
+                <div class="tile">
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-info">
+                            <p class="title">Robot model</p>
+                            <div class="content">
+                                <!-- ... -->
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-success">
+                            <p class="title">Generated Map</p>
+                            <div class="content">
+                                <!-- ... -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile">
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-danger">
+                            <p class="title">Camera</p>
+                            <div class="content">
+                                <!-- ... -->
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-primary">
+                            <p class="title">Commands</p>
+                            <div class="content">
+                                <!-- ... -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-
-
     <script type="text/javascript">
-
         // We could have loaded main.js simply with:
-
         //  <script type="text/javascript" src="main.js">
-
         //
-
         // BUT we were having caching-related problems.
-
         // Loading main.js with a Date.now() in the URL we avoid using cache
-
-
-
         var script = document.createElement('script');
-
         script.type = 'text/javascript';
-
         script.src = 'main.js?v=11.' + Date.now();
-
         document.head.appendChild(script);
-
     </script>
-
 </body>
-
-
 
 </html>
