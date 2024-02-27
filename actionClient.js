@@ -5,11 +5,13 @@ export default {
   data() {
     return {
       waypoints: [
-        { x: 0, y: 0 },
-        { x: 1, y: 1 },
-        { x: 2, y: 2 },
-        { x: 3, y: 3 },
-        { x: 4, y: 4 },
+        { x: 0.65, y: -0.5 },
+        { x: 0.65, y: 0.45 },
+        { x: 0.25, y: 0.48 },
+        { x: 0.20, y: 0.0 },
+        { x: -0.12, y: 0.0 },
+        { x: -0.12, y: -0.5 },
+        { x: -0.12, y: 0.5 },
       ],
       selectedWaypoint: null,
       goal: null,
