@@ -89,36 +89,43 @@
                         <article class="tile is-child notification is-primary">
                             <p class="title">Commands</p>
                             <div class="content">
-                                <!-- ... -->
-                                <label>Goal</label>
-                                <div>
-                                    <label>X</label>
-                                    <input type="number" v-model.number="action.goal.position.x" />
+                                <div class="field">
+                                    <label class="label">Goal</label>
+                                    <div class="field has-addons">
+                                        <div class="control">
+                                            <label class="label">X</label>
+                                            <input class="input" type="number" v-model.number="action.goal.position.x" />
+                                        </div>
+                                        <div class="control">
+                                            <label class="label">Y</label>
+                                            <input class="input" type="number" v-model.number="action.goal.position.y" />
+                                        </div>
+                                    </div>
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                            <button class="button is-link" :disabled="!connected || action.status.status == 1" @click="sendGoal">Start</button>
+                                        </div>
+                                        <div class="control">
+                                            <button class="button is-link is-light" :disabled="!connected || ![1].includes(action.status.status)" @click="cancelGoal">Cancel</button>
+                                        </div>
+                                    </div>
                                 </div>
+                                <hr />
                                 <div>
-                                    <label>Y</label>
-                                    <input type="number" v-model.number="action.goal.position.y" />
+                                    <label class="label text-muted">Feedback</label>
+                                    <p>Position: {{ action.feedback.position }}</p>
+                                    <p>State: {{ action.feedback.state }}</p>
                                 </div>
-                                <button :disabled="!connected || action.status.status == 1"
-                                    @click="sendGoal">Start</button>
-                                <button :disabled="!connected || ![1].includes(action.status.status)"
-                                    @click="cancelGoal">Cancel</button>
-                            </div>
-                            <hr />
-                            <div>
-                                <label class="text-muted">Feedback</label>
-                                <p>Position: {{ action.feedback.position }}</p>
-                                <p>State: {{ action.feedback.state }}</p>
-                            </div>
-                            <hr />
-                            <div>
-                                <label class="text-muted">Result</label>
-                                <p>Succeeded? {{ action.result.success }}</p>
-                            </div>
-                            <hr />
-                            <div>
-                                <label class="text-muted">Status</label>
-                                <p>{{ action.status.text }}</p>
+                                <hr />
+                                <div>
+                                    <label class="label text-muted">Result</label>
+                                    <p>Succeeded? {{ action.result.success }}</p>
+                                </div>
+                                <hr />
+                                <div>
+                                    <label class="label text-muted">Status</label>
+                                    <p>{{ action.status.text }}</p>
+                                </div>
                             </div>
                         </article>
                     </div>

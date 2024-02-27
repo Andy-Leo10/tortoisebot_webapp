@@ -29,6 +29,7 @@
 
     rostopic type /tortoisebot_as/goal
     rosmsg show course_web_dev_ros/WaypointActionActionGoal
+    rostopic pub /tortoisebot_as/goal course_web_dev_ros/WaypointActionActionGoal "
     rosrun teleop_twist_keyboard teleop_twist_keyboard.py
     rosbridge_address
     webpage_address

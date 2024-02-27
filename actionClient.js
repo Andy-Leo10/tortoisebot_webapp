@@ -18,7 +18,7 @@ export default {
             console.log('sendGoal called');
             let actionClient = new ROSLIB.ActionClient({
                 ros : this.ros,
-                serverName : '/turtlebot2_action_service_as',
+                serverName : '/tortoisebot_as',
                 actionName : 'course_web_dev_ros/WaypointActionAction'
             })
 

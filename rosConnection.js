@@ -7,7 +7,7 @@ export default {
       connected: false,
       loading: false,
       logs: [],
-      rosbridge_address: 'wss',
+      rosbridge_address: 'wss://i-064ae7112eefb38c7.robotigniteacademy.com/a3aa052e-7aa1-4aa1-9d67-03c8a4b5fdbd/rosbridge/',
     };
   },
   methods: {
