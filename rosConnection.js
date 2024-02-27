@@ -22,6 +22,8 @@ export default {
         this.loading = false
         // Call the setup3DViewer method when connected
         this.setup3DViewer();
+        // call the camera method when connected
+        this.setCamera();
       })
       this.ros.on('error', (error) => {
         this.logs.unshift((new Date()).toTimeString() + ` - Error: ${error}`)
@@ -32,6 +34,8 @@ export default {
         this.loading = false
         // Call the unset3DViewer method when disconnected
         this.unset3DViewer();
+        // call the delCamera method when disconnected
+        this.delCamera();
       })
     },
     disconnect: function () {
