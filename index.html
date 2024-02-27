@@ -91,26 +91,28 @@
                             <div class="content">
                                 <div class="field">
                                     <label class="label">Goal</label>
-                                    <div class="field has-addons">
+                                    <div class="field">
+                                        <label class="label">Waypoints</label>
                                         <div class="control">
-                                            <label class="label">X</label>
-                                            <input class="input" type="number" v-model.number="action.goal.position.x" />
-                                        </div>
-                                        <div class="control">
-                                            <label class="label">Y</label>
-                                            <input class="input" type="number" v-model.number="action.goal.position.y" />
+                                            <div class="select">
+                                                <select v-model="selectedWaypoint" @change="updateGoal">
+                                                    <option v-for="(waypoint, index) in waypoints" :key="index" :value="waypoint">
+                                                        Waypoint {{ index + 1 }}: ({{ waypoint.x }}, {{ waypoint.y }})
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="field is-grouped">
                                         <div class="control">
-                                            <button class="button is-link" :disabled="!connected || action.status.status == 1" @click="sendGoal">Start</button>
+                                            <button class="button is-link" :disabled="!connected || action.status.status == 1" @click="sendGoal">Go to waypoint</button>
                                         </div>
                                         <div class="control">
                                             <button class="button is-link is-light" :disabled="!connected || ![1].includes(action.status.status)" @click="cancelGoal">Cancel</button>
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+                                <!-- <hr />
                                 <div>
                                     <label class="label text-muted">Feedback</label>
                                     <p>Position: {{ action.feedback.position }}</p>
@@ -125,7 +127,7 @@
                                 <div>
                                     <label class="label text-muted">Status</label>
                                     <p>{{ action.status.text }}</p>
-                                </div>
+                                </div> -->
                             </div>
                         </article>
                     </div>
