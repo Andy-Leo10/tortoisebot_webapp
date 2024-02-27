@@ -20,8 +20,8 @@ export default {
         this.logs.unshift((new Date()).toTimeString() + ' - Connected!')
         this.connected = true
         this.loading = false
-        this.visualizeModel();
-        visualizeModel.setup3DViewer();
+        // Call the setup3DViewer method when connected
+        this.setup3DViewer();
       })
       this.ros.on('error', (error) => {
         this.logs.unshift((new Date()).toTimeString() + ` - Error: ${error}`)
@@ -30,6 +30,8 @@ export default {
         this.logs.unshift((new Date()).toTimeString() + ' - Disconnected!')
         this.connected = false
         this.loading = false
+        // Call the unset3DViewer method when disconnected
+        this.unset3DViewer();
       })
     },
     disconnect: function () {
