@@ -104,6 +104,22 @@
                                 <button :disabled="!connected || ![1].includes(action.status.status)"
                                     @click="cancelGoal">Cancel</button>
                             </div>
+                            <hr />
+                            <div>
+                                <label class="text-muted">Feedback</label>
+                                <p>Position: {{ action.feedback.position }}</p>
+                                <p>State: {{ action.feedback.state }}</p>
+                            </div>
+                            <hr />
+                            <div>
+                                <label class="text-muted">Result</label>
+                                <p>Succeeded? {{ action.result.success }}</p>
+                            </div>
+                            <hr />
+                            <div>
+                                <label class="text-muted">Status</label>
+                                <p>{{ action.status.text }}</p>
+                            </div>
                         </article>
                     </div>
                 </div>
