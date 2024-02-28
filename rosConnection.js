@@ -26,6 +26,8 @@ export default {
         this.setCamera();
         // call the setupMapViewer method when connected
         this.setupMapViewer();
+        // play the sound
+        document.getElementById('connectSound').play();
       })
       this.ros.on('error', (error) => {
         this.logs.unshift((new Date()).toTimeString() + ` - Error: ${error}`)

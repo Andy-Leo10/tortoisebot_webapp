@@ -30,6 +30,7 @@
 </head>
 
 <body>
+    <audio id="connectSound" src="clash-royale-intro.mp3"></audio>
     <section class="section">
         <div class="container">
             <h1 class="title custom-font-super-cell has-text-centered">
@@ -95,7 +96,7 @@
                 <div class="tile">
                     <div class="tile is-parent">
                         <article class="tile is-child notification is-danger">
-                            <p class="title">Camera</p>
+                            <p class="title">Camera Stream</p>
                             <div class="content">
                                 <!-- ... -->
                                 <div id="divCamera"></div>
@@ -104,7 +105,7 @@
                     </div>
                     <div class="tile is-parent">
                         <article class="tile is-child notification is-primary">
-                            <p class="title">Commands</p>
+                            <p class="title">Command robot</p>
                             <div class="content">
                                 <div class="field">
                                     <div class="field">
@@ -173,6 +174,21 @@
         script2.src = 'actionClient.js?v=10.' + Date.now();
         document.head.appendChild(script2);
 
+        var script3 = document.createElement('script');
+        script3.type = 'module';
+        script3.src = 'visualizeModel.js?v=10.' + Date.now();
+        document.head.appendChild(script3);
+
+        var script4 = document.createElement('script');
+        script4.type = 'module';
+        script4.src = 'map.js?v=10.' + Date.now();
+        document.head.appendChild(script4);
+
+        var script5 = document.createElement('script');
+        script5.type = 'module';
+        script5.src = 'camera.js?v=10.' + Date.now();
+        document.head.appendChild(script5);
+        
         var script_main = document.createElement('script');
         script_main.type = 'module';
         script_main.src = 'main.js?v=10.' + Date.now();

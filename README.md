@@ -51,3 +51,9 @@ Links for application
     webvideo_address
     rosbridge_address
     webpage_address
+
+---
+Pending work
+- [ ] joystick
+- [ ] fiz camera
+- [ ] sound
