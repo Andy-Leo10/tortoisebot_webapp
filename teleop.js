@@ -48,14 +48,14 @@ export default {
             height: 250,
             color: 'gray',
             handleColor: 'white',
-            handleRadius: 80,
+            handleRadius: 60,
             onChange: (delta) => {
                 deltaX.textContent = delta.x.toFixed(2);
                 deltaY.textContent = delta.y.toFixed(2);
                 this.publishTwist(-delta.y / 2, -delta.x / 1);
             },
         });
-        const testPublishButton = document.querySelector('#test-publish');
-        testPublishButton.addEventListener('click', this.publishSomething);
+        // const testPublishButton = document.querySelector('#test-publish');
+        // testPublishButton.addEventListener('click', this.publishSomething);
     },
 };
