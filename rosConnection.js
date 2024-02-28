@@ -27,7 +27,14 @@ export default {
         // call the setupMapViewer method when connected
         this.setupMapViewer();
         // play the sound
-        document.getElementById('connectSound').play();
+        // Create a new Audio object
+        var audio = new Audio('path-to-your-audio-file.mp3');
+        // Play the audio
+        audio.play().then(() => {
+          console.log('Audio played successfully.');
+        }).catch((error) => {
+          console.error('Error playing audio:', error);
+        });
       })
       this.ros.on('error', (error) => {
         this.logs.unshift((new Date()).toTimeString() + ` - Error: ${error}`)
