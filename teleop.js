@@ -20,21 +20,39 @@ export default {
                 name: '/cmd_vel',
                 messageType: 'geometry_msgs/Twist',
             })
-            this.pubInterval = setInterval(() => {
-                let twist = new ROSLIB.Message({
-                    linear: {
-                        x: -this.joystick.deltaY() / 2,
-                        y: 0,
-                        z: 0,
-                    },
-                    angular: {
-                        x: 0,
-                        y: 0,
-                        z: this.joystick.deltaX() / 2,
-                    },
-                })
-                topic.publish(twist)
-            }, 100)
+            let twist = new ROSLIB.Message({
+                linear: {
+                    x: -this.joystick.deltaY() / 2,
+                    y: 0,
+                    z: 0,
+                },
+                angular: {
+                    x: 0,
+                    y: 0,
+                    z: this.joystick.deltaX() / 2,
+                },
+            })
+            topic.publish(twist)
+        },
+        publishSomething: function () {
+            let topic = new ROSLIB.Topic({
+                ros: this.ros,
+                name: '/cmd_vel',
+                messageType: 'geometry_msgs/Twist',
+            })
+            let twist = new ROSLIB.Message({
+                linear: {
+                    x: 0.1,
+                    y: 0,
+                    z: 0,
+                },
+                angular: {
+                    x: 0,
+                    y: 0,
+                    z: 0.5,
+                },
+            })
+            topic.publish(twist)
         },
     },
     mounted() {
@@ -53,5 +71,7 @@ export default {
                 deltaY.textContent = delta.y.toFixed(2);
             },
         });
+        const testPublishButton = document.querySelector('#test-publish');
+  testPublishButton.addEventListener('click', this.publishSomething);
     },
 };
