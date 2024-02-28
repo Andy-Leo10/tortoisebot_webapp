@@ -5,6 +5,7 @@ import actionClient from './actionClient.js';
 import visualizeModel from './visualizeModel.js';
 import camera from './camera.js';
 import map from './map.js';
+import teleop from './teleop.js';
 
 var app = new Vue({
   el: '#app',
@@ -14,7 +15,8 @@ var app = new Vue({
     actionClient,
     visualizeModel,
     camera,
-    map
+    map,
+    teleop
   ],
   mounted() {
     this.interval = setInterval(() => {
