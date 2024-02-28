@@ -14,7 +14,7 @@ export default {
     },
     methods: {
         // publish the twist message to topic /cmd_vel
-        publishTwist: function () {
+        publishTwist: function (linearX, angularZ) {
             let topic = new ROSLIB.Topic({
                 ros: this.ros,
                 name: '/cmd_vel',
@@ -22,37 +22,20 @@ export default {
             })
             let twist = new ROSLIB.Message({
                 linear: {
-                    x: -this.joystick.deltaY() / 2,
+                    x: linearX,
                     y: 0,
                     z: 0,
                 },
                 angular: {
                     x: 0,
                     y: 0,
-                    z: this.joystick.deltaX() / 2,
+                    z: angularZ,
                 },
             })
             topic.publish(twist)
         },
         publishSomething: function () {
-            let topic = new ROSLIB.Topic({
-                ros: this.ros,
-                name: '/cmd_vel',
-                messageType: 'geometry_msgs/Twist',
-            })
-            let twist = new ROSLIB.Message({
-                linear: {
-                    x: 0.1,
-                    y: 0,
-                    z: 0,
-                },
-                angular: {
-                    x: 0,
-                    y: 0,
-                    z: 0.5,
-                },
-            })
-            topic.publish(twist)
+            this.publishTwist(0.1, 0.5);
         },
     },
     mounted() {
@@ -61,17 +44,18 @@ export default {
         const deltaY = document.querySelector('#delta-y');
 
         this.joystick = new VirtualJoystick(joystickContainer, {
-            width: 150,
-            height: 150,
+            width: 250,
+            height: 250,
             color: 'gray',
             handleColor: 'white',
             handleRadius: 40,
-            onChange: function (delta) {
+            onChange: (delta) => {
                 deltaX.textContent = delta.x.toFixed(2);
                 deltaY.textContent = delta.y.toFixed(2);
+                this.publishTwist(-delta.y / 2, -delta.x / 1);
             },
         });
         const testPublishButton = document.querySelector('#test-publish');
-  testPublishButton.addEventListener('click', this.publishSomething);
+        testPublishButton.addEventListener('click', this.publishSomething);
     },
 };
