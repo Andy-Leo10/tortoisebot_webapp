@@ -48,7 +48,7 @@ export default {
             height: 250,
             color: 'gray',
             handleColor: 'white',
-            handleRadius: 40,
+            handleRadius: 80,
             onChange: (delta) => {
                 deltaX.textContent = delta.x.toFixed(2);
                 deltaY.textContent = delta.y.toFixed(2);
