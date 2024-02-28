@@ -50,9 +50,9 @@ export default {
             handleColor: 'white',
             handleRadius: 60,
             onChange: (delta) => {
-                deltaX.textContent = delta.x.toFixed(2);
-                deltaY.textContent = delta.y.toFixed(2);
-                this.publishTwist(-delta.y / 2, -delta.x / 1);
+                // deltaX.textContent = delta.x.toFixed(2);
+                // deltaY.textContent = delta.y.toFixed(2);
+                this.publishTwist(-delta.y / 4, -delta.x / 1);
             },
         });
         // const testPublishButton = document.querySelector('#test-publish');
