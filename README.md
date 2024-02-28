@@ -55,5 +55,5 @@ Links for application
 ---
 Pending work
 - [ ] joystick
-- [ ] fiz camera
-- [ ] sound
+- [ ] fix camera
+- [x] sound

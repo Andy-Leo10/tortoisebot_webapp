@@ -28,7 +28,7 @@ export default {
         this.setupMapViewer();
         // play the sound
         // Create a new Audio object
-        var audio = new Audio('path-to-your-audio-file.mp3');
+        var audio = new Audio('clash-royale-intro.mp3');
         // Play the audio
         audio.play().then(() => {
           console.log('Audio played successfully.');
