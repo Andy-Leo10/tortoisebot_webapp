@@ -19,6 +19,9 @@ export default {
                 antialias: true,
                 fixedFrame: 'odom'
             })
+            // Zoom in
+            this.viewer.camera.fov *= 0.15;
+            this.viewer.camera.updateProjectionMatrix();
 
             // Add a grid.
             this.viewer.addObject(new ROS3D.Grid({

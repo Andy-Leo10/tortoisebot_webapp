@@ -56,8 +56,3 @@ Links for application
     rosbridge_address
     webpage_address
 
----
-Pending work
-- [x] joystick
-- [ ] fix camera
-- [x] sound

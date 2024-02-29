@@ -31,6 +31,9 @@ export default {
             this.mapGridClient.on('change', () => {
                 this.mapViewer.scaleToDimensions(this.mapGridClient.currentGrid.width, this.mapGridClient.currentGrid.height)
                 this.mapViewer.shift(this.mapGridClient.currentGrid.pose.position.x, this.mapGridClient.currentGrid.pose.position.y)
+                // Zoom in 
+                this.mapViewer.scene.scaleX *= 5.0;
+                this.mapViewer.scene.scaleY *= 5.0;
             })
         },
         unsetMapViewer() {

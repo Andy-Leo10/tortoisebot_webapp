@@ -8,13 +8,20 @@ export default {
             console.log(without_wss)
             let domain = without_wss.split('/')[0] + '/' + without_wss.split('/')[1]
             console.log(domain)
-            let host = domain + '/cameras'
+
+            let topic = '/camera/image_raw';
+            let width = 420;
+            let height = 360;
+
+            let host = domain + '/cameras/stream?topic=' + topic + '&width=' + width + '&height=' + height;
+            console.log('Stream URL-X:', host);
+
             let viewer = new MJPEGCANVAS.Viewer({
                 divID: 'divCamera',
                 host: host,
-                width: 320,
-                height: 240,
-                topic: '/camera/rgb/image_raw',
+                width: 420,
+                height: 360,
+                topic: '/camera/image_raw',
                 ssl: true,
             })
         },
