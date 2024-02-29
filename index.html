@@ -44,6 +44,15 @@
         <div class="tile is-ancestor">
             <div class="tile is-4 is-vertical">
                 <div class="tile is-parent">
+                    <article class="tile is-child notification is-info">
+                        <p class="title">Robot model</p>
+                        <div class="content">
+                            <!-- ... -->
+                            <div id="div3DViewer"></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
                     <article class="tile is-child notification is-primary">
                         <p class="title">Connection status</p>
                         <p class="subtitle has-text-danger" v-if="!connected">Not connected!</p>
@@ -61,24 +70,15 @@
                         </div>
                     </article>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child notification is-warning">
-                        <p class="title">Logs</p>
-                        <div class="content">
-                            <!-- ... -->
-                            <p v-for="log in logs">{{ log }}</p>
-                        </div>
-                    </article>
-                </div>
             </div>
             <div class="tile is-8 is-vertical">
                 <div class="tile">
                     <div class="tile is-parent">
-                        <article class="tile is-child notification is-info">
-                            <p class="title">Robot model</p>
+                        <article class="tile is-child notification is-danger">
+                            <p class="title">Camera Stream</p>
                             <div class="content">
                                 <!-- ... -->
-                                <div id="div3DViewer"></div>
+                                <div id="divCamera"></div>
                             </div>
                         </article>
                     </div>
@@ -94,17 +94,16 @@
                 </div>
                 <div class="tile">
                     <div class="tile is-parent">
-                        <article class="tile is-child notification is-danger">
-                            <p class="title">Camera Stream</p>
-                            <div class="content">
-                                <!-- ... -->
-                                <div id="divCamera"></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="tile is-parent">
                         <article class="tile is-child notification is-primary">
                             <p class="title">Command robot</p>
+                            <div class="columns is-centered is-vcentered">
+                                <div class="column is-narrow">
+                                    <div class="joystick"></div><br>
+                                    <!-- <p>Delta X: <span id="delta-x">0.00</span></p>
+                                        <p>Delta Y: <span id="delta-y">0.00</span></p> -->
+                                </div>
+                            </div>
+                            <!-- <button id="test-publish">Test Publish</button> -->
                             <div class="content">
                                 <div class="field">
                                     <div class="field">
@@ -149,14 +148,15 @@
                                     <label class="label text-muted">Status</label>
                                     <p>{{ action.status.text }}</p>
                                 </div> -->
-                                <div class="columns is-centered is-vcentered">
-                                    <div class="column is-narrow">
-                                        <div class="joystick"></div><br>                            
-                                        <!-- <p>Delta X: <span id="delta-x">0.00</span></p>
-                                        <p>Delta Y: <span id="delta-y">0.00</span></p> -->
-                                    </div>
-                                </div>
-                                <!-- <button id="test-publish">Test Publish</button> -->
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-warning">
+                            <p class="title">Logs</p>
+                            <div class="content">
+                                <!-- ... -->
+                                <p v-for="log in logs">{{ log }}</p>
                             </div>
                         </article>
                     </div>
