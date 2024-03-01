@@ -44,11 +44,11 @@
         <div class="tile is-ancestor">
             <div class="tile is-4 is-vertical">
                 <div class="tile is-parent">
-                    <article class="tile is-child notification is-info">
-                        <p class="title">Robot model</p>
+                    <article class="tile is-child notification is-success">
+                        <p class="title">Generated Map</p>
                         <div class="content">
                             <!-- ... -->
-                            <div id="div3DViewer"></div>
+                            <div id="divMapViewer"></div>
                         </div>
                     </article>
                 </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="tile is-8 is-vertical">
                 <div class="tile">
-                    <div class="tile is-parent">
+                    <div id="camera-tile" class="tile is-parent">
                         <article class="tile is-child notification is-danger">
                             <p class="title">Camera Stream</p>
                             <div class="content">
@@ -82,17 +82,6 @@
                             </div>
                         </article>
                     </div>
-                    <div class="tile is-parent">
-                        <article class="tile is-child notification is-success">
-                            <p class="title">Generated Map</p>
-                            <div class="content">
-                                <!-- ... -->
-                                <div id="divMapViewer"></div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div class="tile">
                     <div class="tile is-parent">
                         <article class="tile is-child notification is-primary">
                             <p class="title">Command robot</p>
@@ -148,6 +137,17 @@
                                     <label class="label text-muted">Status</label>
                                     <p>{{ action.status.text }}</p>
                                 </div> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile">
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-info">
+                            <p class="title">Robot model</p>
+                            <div class="content">
+                                <!-- ... -->
+                                <div id="div3DViewer"></div>
                             </div>
                         </article>
                     </div>
